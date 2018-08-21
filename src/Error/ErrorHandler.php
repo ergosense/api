@@ -16,6 +16,7 @@ class ErrorHandler
 
   public function __invoke(Request $request, Response $response, Exception $exception)
   {
+    error_log(print_r($exception->getTraceAsString(), 1));
     $response = $this->serializer->serialize($exception, $request, $response);
 
     // TODO http mapping

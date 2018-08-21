@@ -9,6 +9,11 @@ use Aura\Sql\ExtendedPdo;
 use Aura\SqlQuery\QueryFactory;
 use Ergosense\Error\ErrorHandler;
 
+// controllers, to be removed later
+use function DI\autowire;
+use function DI\get;
+use Ergosense\Action\CreateToken;
+
 return [
     /**
      * Content serializer. Responsible for handling the "Accept"
@@ -30,7 +35,7 @@ return [
         $auth = new AuthMiddleware();
 
         // Register the allowed authentication methods
-        $auth->register(new JsonWebToken($c->get('settings')['jwt_key']));
+        $auth->register(new JsonWebToken($c->get('settings.jwt_key')));
         return $auth;
     },
     /**
@@ -39,19 +44,21 @@ return [
      * management.
      */
     PDO::class => function (ContainerInterface $c) {
-        $settings   = $c->get('settings');
-        $driver     = $settings['pdo']['driver'];
-        $host       = $settings['pdo']['host'];
-        $db         = $settings['pdo']['db'];
-        $user       = $settings['pdo']['user'];
-        $password   = $settings['pdo']['password'];
+        $driver     = $c->get('settings.pdo.driver');
+        $host       = $c->get('settings.pdo.host');
+        $db         = $c->get('settings.pdo.db');
+        $user       = $c->get('settings.pdo.user');
+        $password   = $c->get('settings.pdo.password');
         $connection = sprintf('%s:host=%s;dbname=%s', $driver, $host, $db);
 
         return new ExtendedPdo($connection, $user, $password);
     },
     QueryFactory::class => function (ContainerInterface $c) {
-        return new QueryFactory($c->get('settings')['pdo']['driver']);
+        return new QueryFactory($c->get('settings.pdo.driver'));
     },
+    // TODO fix this, we don't want to register controllers
+    CreateToken::class => autowire()
+        ->constructorParameter('secret', get('settings.jwt_key')),
     /**
      * Overwrite the default Slim error handler
      */

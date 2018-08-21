@@ -2,15 +2,11 @@
 use function DI\add;
 
 return [
-    'settings' => add([
-        'migrations' => './migrations/',
-        'jwt_key' => 'testkey',
-        'pdo' => [
-            'driver' => 'mysql',
-            'host' => 'localhost',
-            'db' => 'test',
-            'user' => 'root',
-            'password' => null
-        ]
-    ])
+    'settings.migrations' => './migrations',
+    'settings.jwt_key' => 'testkey',
+    'settings.pdo.driver' => 'mysql',
+    'settings.pdo.host' => 'localhost',
+    'settings.pdo.db' => 'test',
+    'settings.pdo.user' => 'root',
+    'settings.pdo.password' => null
 ];

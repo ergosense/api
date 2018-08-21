@@ -24,15 +24,26 @@ use Slim\Handlers\NotAllowed;
 use Slim\Handlers\Strategies\RequestResponse;
 use Slim\CallableResolver;
 
+use function DI\get;
+
 return [
+    'settings.httpVersion' => '1.1',
+    'settings.responseChunkSize' => 4096,
+    'settings.outputBuffering' => 'append',
+    'settings.determineRouteBeforeAppMiddleware' => false,
+    'settings.displayErrorDetails' => true,
+    'settings.addContentLengthHeader' => true,
+    'settings.routerCacheFile' => false,
+    // Slim framework specific definitions. We use flat values when
+    // modifying cause it's easier to read and also works better with PHP-DI
     'settings' => [
-        'httpVersion' => '1.1',
-        'responseChunkSize' => 4096,
-        'outputBuffering' => 'append',
-        'determineRouteBeforeAppMiddleware' => false,
-        'displayErrorDetails' => true,
-        'addContentLengthHeader' => true,
-        'routerCacheFile' => false,
+        'httpVersion' => get('settings.httpVersion'),
+        'responseChunkSize' => get('settings.responseChunkSize'),
+        'outputBuffering' => get('settings.outputBuffering'),
+        'determineRouteBeforeAppMiddleware' => get('settings.determineRouteBeforeAppMiddleware'),
+        'displayErrorDetails' => get('settings.displayErrorDetails'),
+        'addContentLengthHeader' => get('settings.addContentLengthHeader'),
+        'routerCacheFile' => get('settings.routerCacheFile'),
     ],
     'environment' => function () {
         return new Environment($_SERVER);

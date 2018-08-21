@@ -3,17 +3,22 @@ namespace Ergosense\Action;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Ergosense\Repository\UserRepository;
+use Ergosense\Repository\UserRepository as UserRepo;
 use \Firebase\JWT\JWT;
 
-class CreateToken extends ActionAbstract
+use Ergosense\Responder\Base as Responder;
+
+class CreateToken
 {
     private $userRepo;
 
     private $secret;
 
-    public function __construct(UserRepository $userRepo, $secret)
+    private $rs;
+
+    public function __construct(Responder $rs, UserRepo $userRepo, $secret)
     {
+        $this->rs = $rs;
         $this->userRepo = $userRepo;
         $this->secret = $secret;
     }
@@ -31,7 +36,7 @@ class CreateToken extends ActionAbstract
         ];
     }
 
-    public function run(Request $request, Response $response, $args)
+    public function __invoke(Request $request, Response $response, $args)
     {
         // TODO some validation
 
@@ -47,7 +52,11 @@ class CreateToken extends ActionAbstract
             );
 
             // TODO responder layer
-            return [ 'token' => $jwt ];
+            return $this->rs->respond(
+                [ 'token' => $jwt ],
+                $request,
+                $response
+            );
         } else {
             // TODO so bad
             return [ 'error' => 'boom' ];

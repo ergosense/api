@@ -11,19 +11,7 @@ use Psr\Http\Message\ResponseInterface as Response;
  */
 abstract class ActionAbstract
 {
-    private $serializer;
-
-    public function __construct(\Ergosense\Serializer\Serializer $serializer)
-    {
-        $this->serializer = $serializer;
-    }
-
     abstract function run(Request $request, Response $response, $args);
-
-    public function responder($entry)
-    {
-        return $entry;
-    }
 
     public function __invoke(Request $request, Response $response, $args)
     {

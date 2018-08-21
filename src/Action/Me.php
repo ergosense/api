@@ -6,33 +6,26 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Ergosense\Repository\UserRepository;
 use Ergosense\Responder\ResponderTrait;
 
-class Me extends ActionAbstract
+use Ergosense\Responder\Me as Responder;
+
+class Me
 {
     private $userRepo;
 
-    public function __construct(\Ergosense\Serializer\Serializer $serializer, UserRepository $userRepo)
+    private $rs;
+
+    public function __construct(Responder $rs, UserRepository $userRepo)
     {
         $this->userRepo = $userRepo;
-        parent::__construct($serializer);
+        $this->rs = $rs;
     }
 
-    public function responder($entry)
+    public function __invoke(Request $request, Response $response, $args)
     {
-        return [
-            'id'        => (int) $entry['id'],
-            'email'     => $entry['email'],
-            'role'      => $entry['role'],
-            'active'    => (boolean) $entry['active']
-        ];
-    }
-
-    public function run(Request $request, Response $response, $args)
-    {
-
         $userId = $request->getAttribute('user');
 
         $user = $this->userRepo->findById($userId);
 
-        return $user;
+        return $this->rs->respond($user, $request, $response);
     }
 }

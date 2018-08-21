@@ -41,7 +41,7 @@ class ContentTypeMiddleware
                 implode(", ", static::$defaultSupportedTypes)
             );
         }
-        throw new \Exception('poop');
+        //throw new \Exception('poop');
 
         return $next($request, $response);
     }
