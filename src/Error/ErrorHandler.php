@@ -14,13 +14,25 @@ class ErrorHandler
     $this->serializer = $serializer;
   }
 
-  public function __invoke(Request $request, Response $response, Exception $exception)
+  protected function format(Exception $exception)
   {
-    error_log(print_r($exception->getTraceAsString(), 1));
-    $response = $this->serializer->serialize($exception, $request, $response);
+    return [
+      'error' => $exception->getMessage()
+    ];
+  }
+
+  public function __invoke(Request $req, Response $res, Exception $e)
+  {
+    error_log(print_r($e->getTraceAsString(), 1));
+
+    $res = $this->serializer->serialize(
+      $this->format($e),
+      $req,
+      $res
+    );
 
     // TODO http mapping
-    return $response->withStatus(500);
+    return $res->withStatus(500);
 
   }
 }

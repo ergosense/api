@@ -12,10 +12,17 @@ class Base
         $this->serializer = $serializer;
     }
 
+    protected function format(array $data)
+    {
+        return [
+            'data' => $data
+        ];
+    }
+
     public function respond(array $data, $request, $response)
     {
         return $this->serializer->serialize(
-            $data,
+            $this->format($data),
             $request,
             $response
         );

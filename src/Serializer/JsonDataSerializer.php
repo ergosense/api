@@ -14,15 +14,6 @@ class JsonDataSerializer implements SerializerInterface
 
   public function serialize(array $data)
   {
-    return json_encode([
-      'data' => $data
-    ]);
-  }
-
-  public function serializeError(Exception $err)
-  {
-    return json_encode([
-      'error' => $err->getMessage()
-    ]);
+    return json_encode($data);
   }
 }

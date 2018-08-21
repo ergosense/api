@@ -3,16 +3,9 @@ namespace Ergosense\Responder;
 
 use Ergosense\Serializer\Serializer;
 
-class Me
+class Me extends Base
 {
-    private $serializer;
-
-    public function __construct(Serializer $serializer)
-    {
-        $this->serializer = $serializer;
-    }
-
-    public function format(array $data)
+    protected function format(array $data)
     {
         return [
             'id'        => (int) $data['id'],
@@ -20,14 +13,5 @@ class Me
             'role'      => $data['role'],
             'active'    => (boolean) $data['active']
         ];
-    }
-
-    public function respond(array $data, $request, $response)
-    {
-        return $this->serializer->serialize(
-            $this->format($data),
-            $request,
-            $response
-        );
     }
 }

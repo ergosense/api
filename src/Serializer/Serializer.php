@@ -44,12 +44,7 @@ class Serializer
       $match = preg_match('/' . str_replace(['*', '/'], ['.*', '\/'], $ct) . '/', $type);
 
       if ($match || !$ct) {
-        // Check for errors
-        if ($data instanceof Exception) {
-          $result = $handler->serializeError($data);
-        } else {
-          $result = $handler->serialize($data);
-        }
+        $result = $handler->serialize($data);
 
         $response->getBody()->write($result);
 
