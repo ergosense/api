@@ -11,6 +11,13 @@ use Psr\Http\Message\ResponseInterface as Response;
  */
 abstract class ActionAbstract
 {
+    private $serializer;
+
+    public function __construct(\Ergosense\Serializer\Serializer $serializer)
+    {
+        $this->serializer = $serializer;
+    }
+
     abstract function run(Request $request, Response $response, $args);
 
     public function responder($entry)
@@ -24,8 +31,6 @@ abstract class ActionAbstract
 
         $result = $this->responder($result);
 
-        // Always work with JSON, we will decode this and
-        // serialize it in the requested format later in the chain.
-        return json_encode($result);
+        return $this->serializer->serialize($result, $request, $response);
     }
 }

@@ -10,9 +10,10 @@ class Me extends ActionAbstract
 {
     private $userRepo;
 
-    public function __construct(UserRepository $userRepo)
+    public function __construct(\Ergosense\Serializer\Serializer $serializer, UserRepository $userRepo)
     {
         $this->userRepo = $userRepo;
+        parent::__construct($serializer);
     }
 
     public function responder($entry)

@@ -1,4 +1,5 @@
 <?php
+use Psr\Container\ContainerInterface;
 use Ergosense\Serializer\Serializer;
 use Ergosense\Serializer\JsonDataSerializer;
 use Ergosense\Middleware\ContentTypeMiddleware;
@@ -6,13 +7,14 @@ use Ergosense\Middleware\AuthMiddleware;
 use Ergosense\Auth\JsonWebToken;
 use Aura\Sql\ExtendedPdo;
 use Aura\SqlQuery\QueryFactory;
+use Ergosense\Error\ErrorHandler;
 
 return [
     /**
      * Content serializer. Responsible for handling the "Accept"
      * header specified by the end user.
      */
-    Serializer::class => function ($c) {
+    Serializer::class => function (ContainerInterface $c) {
         $serializer = new Serializer();
 
         // Register the allowed output serializers
@@ -24,7 +26,7 @@ return [
      * and populates the route with the ID of the user requesting the
      * resource.
      */
-    AuthMiddleware::class => function ($c) {
+    AuthMiddleware::class => function (ContainerInterface $c) {
         $auth = new AuthMiddleware();
 
         // Register the allowed authentication methods
@@ -36,8 +38,8 @@ return [
      * decorated by the Aura.Sql library for better connection
      * management.
      */
-    PDO::class => function ($c) {
-        $settings = $c->get('settings');
+    PDO::class => function (ContainerInterface $c) {
+        $settings   = $c->get('settings');
         $driver     = $settings['pdo']['driver'];
         $host       = $settings['pdo']['host'];
         $db         = $settings['pdo']['db'];
@@ -47,7 +49,13 @@ return [
 
         return new ExtendedPdo($connection, $user, $password);
     },
-    QueryFactory::class => function ($c) {
+    QueryFactory::class => function (ContainerInterface $c) {
         return new QueryFactory($c->get('settings')['pdo']['driver']);
+    },
+    /**
+     * Overwrite the default Slim error handler
+     */
+    'errorHandler' => function (ContainerInterface $c) {
+        return new ErrorHandler($c->get(Serializer::class));
     }
 ];

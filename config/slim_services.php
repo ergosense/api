@@ -46,7 +46,6 @@ return [
         return $response->withProtocolVersion($c->get('settings')['httpVersion']);
     },
     'router' => function (ContainerInterface $c) {
-        error_log(print_r($c->get('settings'), 1));
         $router = (new Router)->setCacheFile($c->get('settings')['routerCacheFile']);
         if (method_exists($router, 'setContainer')) {
             $router->setContainer($c);

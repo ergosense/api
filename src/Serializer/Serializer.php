@@ -3,6 +3,7 @@ namespace Ergosense\Serializer;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use \Exception;
 
 class Serializer
 {
@@ -34,7 +35,7 @@ class Serializer
     return false;
   }
 
-  public function serialize(Request $request, Response $response)
+  public function serialize($data, Request $request, Response $response)
   {
     // Get accepted content type
     $ct = $request->getHeaderLine('Accept');
@@ -43,7 +44,16 @@ class Serializer
       $match = preg_match('/' . str_replace(['*', '/'], ['.*', '\/'], $ct) . '/', $type);
 
       if ($match || !$ct) {
-        return $handler->serialize($response);
+        // Check for errors
+        if ($data instanceof Exception) {
+          $result = $handler->serializeError($data);
+        } else {
+          $result = $handler->serialize($data);
+        }
+
+        $response->getBody()->write($result);
+
+        return $response->withHeader('Content-Type', $type);
       }
     }
 

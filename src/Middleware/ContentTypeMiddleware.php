@@ -7,8 +7,6 @@ use Ergosense\Serializer\Serializer;
 
 class ContentTypeMiddleware
 {
-    private $serializer;
-
     // These values are included as part of the slim framework
     static private $defaultSupportedTypes = [
         'application/json',
@@ -16,11 +14,6 @@ class ContentTypeMiddleware
         'text/xml',
         'application/x-www-form-urlencoded'
     ];
-
-    public function __construct(Serializer $serializer)
-    {
-        $this->serializer = $serializer;
-    }
 
     /**
      * Example middleware invokable class
@@ -41,20 +34,15 @@ class ContentTypeMiddleware
         // We don't need to parse the body here, the slim framework
         // does this automatically for us. The results are available with
         // the getParsedBody() method.
+
         if (!in_array($ct, static::$defaultSupportedTypes)) {
-            throw new \Error('Unable to parse body');
+            return $response->withHeader(
+                'Accept',
+                implode(", ", static::$defaultSupportedTypes)
+            );
         }
+        throw new \Exception('poop');
 
-        // Handle output serialization
-        $accept = $request->getHeaderLine('Accept');
-
-        // Check if the serializer supports the requested type
-        if (!$this->serializer->canSerialize($accept)) {
-            throw new \Error('Unable to serialize');
-        }
-
-        $response = $next($request, $response);
-
-        return $this->serializer->serialize($request, $response);
+        return $next($request, $response);
     }
 }
