@@ -3,7 +3,8 @@
         "slim/slim": "^3.0",
         "firebase/php-jwt": "^5.0",
         "aura/sql": "^3.0",
-        "aura/sqlquery": "^2.7"
+        "aura/sqlquery": "^2.7",
+        "php-di/php-di": "^6.0"
     },
     "scripts": {
         "server": "php -S localhost:8080 -t public"

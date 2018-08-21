@@ -10,7 +10,13 @@ $v1 = $app->group('/v1', function () {
     $this->get('/company/{id}', \Ergosense\Action\Company\Get::class);
   });
 
+  /**
+   * Middleware for "authenticated" routes
+   */
   $authedRoutes->add(AuthMiddleware::class);
 });
 
+/**
+ * Add version wide middleware
+ */
 $v1->add(ContentTypeMiddleware::class);

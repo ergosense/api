@@ -9,6 +9,14 @@ class ContentTypeMiddleware
 {
     private $serializer;
 
+    // These values are included as part of the slim framework
+    static private $defaultSupportedTypes = [
+        'application/json',
+        'application/xml',
+        'text/xml',
+        'application/x-www-form-urlencoded'
+    ];
+
     public function __construct(Serializer $serializer)
     {
         $this->serializer = $serializer;
@@ -25,7 +33,17 @@ class ContentTypeMiddleware
      */
     public function __invoke(Request $request, Response $response, $next)
     {
-        // TODO body parsers
+        // Slim includes a set of default body parsers, for now we have
+        // no intention of expanding on this, but it would need to expand in future
+        // if more types are added.
+        $ct = $request->getHeaderLine('Content-Type');
+
+        // We don't need to parse the body here, the slim framework
+        // does this automatically for us. The results are available with
+        // the getParsedBody() method.
+        if (!in_array($ct, static::$defaultSupportedTypes)) {
+            throw new \Error('Unable to parse body');
+        }
 
         // Handle output serialization
         $accept = $request->getHeaderLine('Accept');

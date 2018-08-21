@@ -1,6 +1,8 @@
 <?php
+use function DI\add;
+
 return [
-    'settings' => [
+    'settings' => add([
         'migrations' => './migrations/',
         'jwt_key' => 'testkey',
         'pdo' => [
@@ -10,5 +12,5 @@ return [
             'user' => 'root',
             'password' => null
         ]
-    ]
+    ])
 ];

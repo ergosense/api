@@ -3,6 +3,7 @@ namespace Ergosense\Serializer;
 
 use Slim\Http\Body;
 use Psr\Http\Message\ResponseInterface;
+use \Exception;
 
 class JsonDataSerializer implements SerializerInterface
 {
@@ -20,7 +21,7 @@ class JsonDataSerializer implements SerializerInterface
   {
     try {
       $data = json_decode((string) $response->getBody(), true);
-    } else {
+    } catch (Exception $e) {
       // TODO logger for warnings
       $data = (string) $response->getBody();
     }
