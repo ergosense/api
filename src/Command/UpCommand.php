@@ -30,7 +30,7 @@ class UpCommand extends Command
   protected function configure()
   {
     $this
-      ->setName('migrate:run')
+      ->setName('migrate:up')
       ->setDescription('Run migrations');
   }
 

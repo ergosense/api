@@ -1,14 +1,16 @@
 {
     "require": {
-        "slim/slim": "^3.0",
-        "firebase/php-jwt": "^5.0",
+        "ergosense/php-oaf": "dev-master",
         "aura/sql": "^3.0",
-        "aura/sqlquery": "^2.7",
-        "php-di/php-di": "^6.0"
+        "aura/sqlquery": "^2.7"
     },
     "scripts": {
         "server": "php -S localhost:8080 -t public"
     },
+    "repositories": [{
+        "type": "vcs",
+        "url": "git@github.com:ergosense/php-oaf.git"
+    }],
     "autoload": {
         "psr-4": {
             "Ergosense\\": "src/"

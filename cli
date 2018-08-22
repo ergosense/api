@@ -1,20 +1,7 @@
 #!/usr/bin/env php
 <?php
-// Load up the ergosense application stack
-$app = require_once __DIR__ . '/config/app.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
-// Load up application container
-$c = $app->getContainer();
-
-use Symfony\Component\Console\Application;
-
-// Cli application
-$application = new Application();
-
-// ... register commands
-// TODO consider auto loading
-$application->add(new \Ergosense\Command\CreateCommand($c['settings']['migrations']));
-$application->add(new \Ergosense\Command\UpCommand($c['settings']['migrations'], $c['db']));
-
-// Run the cli application
-$application->run();
+// Application
+$app = new \Ergosense\App;
+$app->cli();

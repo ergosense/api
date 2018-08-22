@@ -6,9 +6,9 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Ergosense\Repository\UserRepository as UserRepo;
 use \Firebase\JWT\JWT;
 
-use Ergosense\Responder\Base as Responder;
+use OAF\Responder\Base as Responder;
 
-class CreateToken
+class Login
 {
     private $userRepo;
 

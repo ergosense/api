@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php';
+
 // HTTP Front Controller
-$app = require_once __DIR__ . '/../config/app.php';
+$app = new \Ergosense\App;
 $app->run();
