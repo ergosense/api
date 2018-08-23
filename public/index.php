@@ -1,12 +1,10 @@
 <?php
-require_once __DIR__ . '/../vendor/autoload.php';
+$stack = require_once __DIR__ . '/../config/bootstrap.php';
 
 $request = \Zend\Diactoros\ServerRequestFactory::fromGlobals();
 
-$kernel = new \OAF\Kernel([
-    __DIR__ . '/../config/services.php',
-    __DIR__ . '/../config/default.php'
-]);
+$response = $stack->handle($request);
 
-$res = $kernel->handle($request);
-$kernel->emit($res);
+$emitter = new \Ergosense\Emitter\Emitter;
+
+$emitter->emit($response);

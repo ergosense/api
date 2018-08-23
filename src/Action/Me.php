@@ -1,6 +1,8 @@
 <?php
 namespace Ergosense\Action;
 
+use Ergosense\Repository\UserRepository as UserRepo;
+
 class Me
 {
     private $userRepo;
@@ -10,8 +12,9 @@ class Me
         $this->userRepo = $userRepo;
     }
 
-    public function __invoke($request)
+    public function __invoke($request, $response)
     {
-        return 'hello fool';
+        $response->getBody()->write('boo');
+        return $response;
     }
 }
