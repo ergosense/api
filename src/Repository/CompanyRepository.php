@@ -3,12 +3,13 @@ namespace Ergosense\Repository;
 
 use Aura\SqlQuery\QueryFactory;
 
-
 class CompanyRepository
 {
   const COMPANY_TABLE = 'company';
 
-  private static $cols = ['id', 'name', 'active'];
+  static private $cols = ['id', 'name', 'active'];
+
+  static private $autoKey = 'id';
 
   public function __construct(\PDO $pdo, QueryFactory $query)
   {
@@ -29,6 +30,13 @@ class CompanyRepository
     $stmt = $this->pdo->prepare($select->getStatement());
     $stmt->execute($select->getBindValues());
     return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+  }
+
+  private function execute($insert)
+  {
+    $stmt = $this->pdo->prepare($insert->getStatement());
+    $stmt->execute($insert->getBindValues());
+    return $this->pdo->lastInsertId();
   }
 
   public function findById($id)
@@ -52,5 +60,18 @@ class CompanyRepository
 
     // TODO pagination
     return $this->fetchAll($select);
+  }
+
+  public function save($body)
+  {
+    $cols = array_diff(static::$cols, [ static::$autoKey ]);
+
+    $insert = $this->query
+      ->newInsert()
+      ->into(static::COMPANY_TABLE)
+      ->cols($cols)
+      ->bindValues($body);
+
+    return $this->execute($insert);
   }
 }

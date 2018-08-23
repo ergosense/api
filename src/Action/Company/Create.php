@@ -6,27 +6,23 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Ergosense\Repository\CompanyRepository;
 use OAF\Error\Exception\NotFound;
 
-use OAF\Responder\Base as Responder;
-
-class Get
+class Create
 {
-    private $rs;
     private $companyRepo;
 
-    public function __construct(Responder $rs, CompanyRepository $companyRepo)
+    public function __construct(CompanyRepository $companyRepo)
     {
-        $this->rs = $rs;
         $this->companyRepo = $companyRepo;
     }
 
     public function __invoke(Request $request, Response $response, $args)
     {
-        $id = $args['id'];
+        $body = $request->getParsedBody();
 
-        if ($company = $this->companyRepo->findById($id)) {
-          return $this->rs->respond($company, $request, $response);
+        if ($id = $this->companyRepo->save($body)) {
+            throw new \Error('created');
         }
 
-        throw new NotFound(sprintf('Company %d does not exist', $id));
+        throw new \Error('poop');
     }
 }

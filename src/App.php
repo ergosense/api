@@ -28,6 +28,8 @@ class App extends \OAF\App
     return $this->group('', function () {
       $this->get('/v1/me', \Ergosense\Action\Me::class);
       $this->get('/v1/company/{id}', \Ergosense\Action\Company\Get::class);
+      $this->get('/v1/company', \Ergosense\Action\Company\Search::class);
+      $this->post('/v1/company', \Ergosense\Action\Company\Create::class);
     });
   }
 
