@@ -6,8 +6,6 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Ergosense\Repository\UserRepository as UserRepo;
 use \Firebase\JWT\JWT;
 
-use OAF\Responder\Base as Responder;
-
 class Login
 {
     private $userRepo;
@@ -16,9 +14,8 @@ class Login
 
     private $rs;
 
-    public function __construct(Responder $rs, UserRepo $userRepo, $secret)
+    public function __construct(UserRepo $userRepo, $secret)
     {
-        $this->rs = $rs;
         $this->userRepo = $userRepo;
         $this->secret = $secret;
     }
@@ -36,10 +33,9 @@ class Login
         ];
     }
 
-    public function __invoke(Request $request, Response $response, $args)
+    public function __invoke(Request $request)
     {
         // TODO some validation
-
         $body = $request->getParsedBody();
 
         $user = $this->userRepo->findByEmail($body['email']);
@@ -52,14 +48,9 @@ class Login
             );
 
             // TODO responder layer
-            return $this->rs->respond(
-                [ 'token' => $jwt ],
-                $request,
-                $response
-            );
-        } else {
-            // TODO so bad
-            return [ 'error' => 'boom' ];
+            return json_encode([ 'token' => $jwt ]);
         }
+
+        throw new \Error('Unable to authenticate');
     }
 }

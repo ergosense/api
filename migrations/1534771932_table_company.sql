@@ -1,7 +1,0 @@
-# generated at 1534771932 by chris
-CREATE TABLE IF NOT EXISTS company (
-  id        INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  name      VARCHAR(255) NOT NULL,
-  active    BOOLEAN      NOT NULL DEFAULT 1,
-  PRIMARY KEY(id)
-);

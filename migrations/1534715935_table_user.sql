@@ -1,9 +1,0 @@
-# generated at 1534715935 by chris
-CREATE TABLE IF NOT EXISTS user (
-  id        INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  email     VARCHAR(255) NOT NULL,
-  password  VARCHAR(255) NOT NULL,
-  role      VARCHAR(255) NOT NULL,
-  active    BOOLEAN      NOT NULL DEFAULT 1,
-  PRIMARY KEY(id)
-);

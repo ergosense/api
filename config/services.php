@@ -1,14 +1,11 @@
 <?php
 use Psr\Container\ContainerInterface;
-use OAF\Encoder\Encoder;
 use Aura\Sql\ExtendedPdo;
 use Aura\SqlQuery\QueryFactory;
-use Ergosense\Error\ErrorHandler;
 
 // controllers, to be removed later
 use function DI\autowire;
 use function DI\get;
-use Ergosense\Action\Login;
 
 return [
     /**
@@ -17,19 +14,18 @@ return [
      * management.
      */
     PDO::class => function (ContainerInterface $c) {
-        $driver     = $c->get('settings.pdo.driver');
-        $host       = $c->get('settings.pdo.host');
-        $db         = $c->get('settings.pdo.db');
-        $user       = $c->get('settings.pdo.user');
-        $password   = $c->get('settings.pdo.password');
+        $driver     = $c->get('pdo.driver');
+        $host       = $c->get('pdo.host');
+        $db         = $c->get('pdo.db');
+        $user       = $c->get('pdo.user');
+        $password   = $c->get('pdo.password');
         $connection = sprintf('%s:host=%s;dbname=%s', $driver, $host, $db);
 
         return new ExtendedPdo($connection, $user, $password);
     },
     QueryFactory::class => function (ContainerInterface $c) {
-        return new QueryFactory($c->get('settings.pdo.driver'));
+        return new QueryFactory($c->get('pdo.driver'));
     },
-    // TODO fix this, we don't want to register controllers
-    Login::class => autowire()
-        ->constructorParameter('secret', get('settings.jwt_key')),
+    Ergosense\Action\Login::class => DI\autowire()
+        ->constructorParameter('secret', DI\get('jwt_key'))
 ];

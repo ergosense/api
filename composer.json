@@ -1,8 +1,9 @@
 {
     "require": {
-        "ergosense/php-oaf": "dev-master",
+        "ergosense/php-oaf": "dev-middleware",
         "aura/sql": "^3.0",
-        "aura/sqlquery": "^2.7"
+        "aura/sqlquery": "^2.7",
+        "firebase/php-jwt": "^5.0"
     },
     "scripts": {
         "server": "php -S localhost:8080 -t public"
