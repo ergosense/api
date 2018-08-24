@@ -5,6 +5,11 @@ namespace Ergosense\Encoder;
 
 class JsonEncoder implements EncoderInterface
 {
+    public function supportsExtension() : array
+    {
+        return ['json'];
+    }
+
     public function supports() : array
     {
         return ['application/json'];

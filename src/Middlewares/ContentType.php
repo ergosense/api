@@ -18,14 +18,14 @@ class ContentType extends BaseContentType
         $format = [];
 
         foreach ($encoders as $i) {
-            $supports = $i->supports();
-            $format[implode(",", $supports)] = [
-                'extension' => [],
-                'mime-type' => $supports,
+
+            $format[get_class($i)] = [
+                'extension' => $i->supportsExtension(),
+                'mime-type' => $i->supports(),
                 'charset'   => true
             ];
 
-            $this->accepts += $supports;
+            $this->accepts += $i->supports();
         }
 
         parent::__construct($format);
