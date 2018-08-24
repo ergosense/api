@@ -7,6 +7,7 @@ use Zend\Stratigility\MiddlewarePipe;
 use OAF\Middleware\ErrorHandler;
 use OAF\Middleware\ContentType;
 use Middlewares\JsonPayload;
+use OAF\Middleware\JwtAuth;
 use OAF\Middleware\RequestHandler;
 
 /*
@@ -52,6 +53,7 @@ $stack = new MiddlewarePipe();
 $stack->pipe($container->get(ErrorHandler::class));
 $stack->pipe($container->get(ContentType::class));
 $stack->pipe($container->get(JsonPayload::class));
+$stack->pipe($container->get(JwtAuth::class));
 $stack->pipe($container->get(RequestHandler::class));
 
 return $stack;
