@@ -1,17 +1,18 @@
 <?php
-$r->addGroup('/v1', function ($r) {
-    $r->get('/me', \Ergosense\Action\Me::class);
+use Ergosense\Action\Login;
+use Ergosense\Action\GetMe;
 
-    $r->post('/login', \Ergosense\Action\Login::class);
+$r->get('/v1/me', GetMe::class);
+$r->post('/v1/login', Login::class);
 
-    $r->get('/company', function ($request) {
+$r->get('/users', function () {});
+$r->post('/users', function () {});
+$r->get('/users/{id}', function () {});
 
-    });
+$r->get('/company', function ($request) {
 
-    $r->get('/company/{id}', function ($request) {
-
-    });
 });
 
+$r->get('/company/{id}', function ($request) {
 
-$r->addRoute('GET', '/', \Ergosense\Action\Host::class);
+});
