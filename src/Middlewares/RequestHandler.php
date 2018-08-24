@@ -31,11 +31,11 @@ class RequestHandler implements MiddlewareInterface
     {
         $route = $request->getAttribute('route');
 
-        $callable = $this->resolver->resolve($route['1']);
+        $callable = $this->resolver->resolve($route[1]);
 
-        $response = $handler->handle($request);
+        $response = new \Zend\Diactoros\Response();;
 
-        return call_user_func($callable, $request, $response);
+        return call_user_func($callable, $request, $response, $route[2]);
 
         /*
         $requestHandler = $request->getAttribute($this->handlerAttribute);

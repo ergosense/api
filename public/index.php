@@ -1,10 +1,14 @@
 <?php
 $stack = require_once __DIR__ . '/../config/bootstrap.php';
 
-$request = \Zend\Diactoros\ServerRequestFactory::fromGlobals();
+use Zend\Diactoros\Server;
 
-$response = $stack->handle($request);
+$server = Server::createServer(
+    [$stack, 'handle'],
+    $_SERVER,
+    $_GET,
+    $_POST,
+    $_COOKIE,
+    $_FILES);
 
-$emitter = new \Ergosense\Emitter\Emitter;
-
-$emitter->emit($response);
+$server->listen();

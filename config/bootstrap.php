@@ -14,12 +14,23 @@ $builder->addDefinitions(__DIR__ . '/../config/default.php');
 // Construct the container
 $container = $builder->build();
 
-$stack = new \Ergosense\Stack;
 
-$stack
-    // Routing
-    ->with(new \Middlewares\JsonPayload)
-    ->with(new \Ergosense\Middlewares\FastRoute($container->get(\FastRoute\Dispatcher::class), $container->get(\Ergosense\RouteLoader\RouteLoaderInterface::class)))
-    ->with(new \Ergosense\Middlewares\RequestHandler(new \Ergosense\CallableResolver($container)));
+use Zend\Stratigility\MiddlewarePipe;
+
+$stack = new MiddlewarePipe();
+
+// Error Handling
+$stack->pipe(new \Ergosense\Middlewares\ErrorHandler);
+
+// Header: Content-Type
+$stack->pipe(new \Ergosense\Middlewares\ContentType($container->get(\Ergosense\Encoder\ResponseEncoderInterface::class)));
+
+// Header: Accepted
+$stack->pipe(new \Middlewares\JsonPayload);
+
+// Routing
+$stack->pipe(new \Ergosense\Middlewares\FastRoute($container->get(\FastRoute\Dispatcher::class), $container->get(\Ergosense\RouteLoader\RouteLoaderInterface::class)));
+
+$stack->pipe(new \Ergosense\Middlewares\RequestHandler(new \Ergosense\CallableResolver($container)));
 
 return $stack;

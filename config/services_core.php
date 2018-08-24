@@ -10,6 +10,11 @@ use FastRoute\DataGenerator\GroupCountBased as GroupCountBasedGenerator;
 use Ergosense\RouteLoader\RouteLoaderInterface;
 use Ergosense\RouteLoader\PhpRouteLoader;
 
+
+use Ergosense\Encoder\ResponseEncoderInterface;
+use Ergosense\Encoder\ResponseEncoder;
+use Ergosense\Encoder\JsonEncoder;
+
 return [
     'routes' => __DIR__ . '/../routes/api.php',
     RouteParser::class => function ($c) {
@@ -35,5 +40,11 @@ return [
     Dispatcher::class => function ($c) {
         $collector = $c->get(RouteCollector::class);
         return new GroupCountBased($collector->getData());
+    },
+    ResponseEncoderInterface::class => function ($c) {
+        $json = new JsonEncoder();
+        $encoder = new ResponseEncoder();
+        $encoder->add($json);
+        return $encoder;
     }
 ];
