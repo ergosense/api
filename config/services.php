@@ -3,6 +3,8 @@ use Psr\Container\ContainerInterface;
 use Aura\Sql\ExtendedPdo;
 use Aura\SqlQuery\QueryFactory;
 
+use Tuupola\Middleware\JwtAuthentication;
+
 // controllers, to be removed later
 use function DI\autowire;
 use function DI\get;
@@ -25,6 +27,13 @@ return [
     },
     QueryFactory::class => function (ContainerInterface $c) {
         return new QueryFactory($c->get('pdo.driver'));
+    },
+    JwtAuthentication::class => function (ContainerInterface $c) {
+        return new JwtAuthentication([
+            'path'      => ['/'],
+            'ignore'    => ['/v1/login'],
+            'secret'    => $c->get('jwt_key')
+        ]);
     },
     Ergosense\Action\Login::class => DI\autowire()
         ->constructorParameter('secret', DI\get('jwt_key'))

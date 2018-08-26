@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ff78f8345a501762742076271e883d16",
+    "hash": "d3b7c6e1aeede5dbfa2975da979595b8",
+    "content-hash": "a1c93cf41524b94e0b17decac1cb6a5b",
     "packages": [
         {
             "name": "aura/sql",
@@ -57,7 +58,7 @@
                 "sqlserver",
                 "sqlsrv"
             ],
-            "time": "2018-06-11T12:57:42+00:00"
+            "time": "2018-06-11 12:57:42"
         },
         {
             "name": "aura/sqlquery",
@@ -121,7 +122,7 @@
                 "sqlserver",
                 "update"
             ],
-            "time": "2016-10-03T20:34:56+00:00"
+            "time": "2016-10-03 20:34:56"
         },
         {
             "name": "ergosense/php-oaf",
@@ -129,22 +130,24 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergosense/php-oaf.git",
-                "reference": "9b10e52066adc6bb12a8dd4806bb1326df926d64"
+                "reference": "fd757e9b05518cfe40b388f05012759f8a2e5d85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergosense/php-oaf/zipball/9b10e52066adc6bb12a8dd4806bb1326df926d64",
-                "reference": "9b10e52066adc6bb12a8dd4806bb1326df926d64",
+                "url": "https://api.github.com/repos/ergosense/php-oaf/zipball/fd757e9b05518cfe40b388f05012759f8a2e5d85",
+                "reference": "fd757e9b05518cfe40b388f05012759f8a2e5d85",
                 "shasum": ""
             },
             "require": {
+                "firebase/php-jwt": "^5.0",
                 "middlewares/fast-route": "^1.1",
+                "middlewares/negotiation": "^1.1",
                 "middlewares/payload": "*",
-                "middlewares/request-handler": "*",
                 "php-di/php-di": "^6.0",
                 "psr/http-server-handler": "*",
                 "psr/http-server-middleware": "*",
-                "zendframework/zend-diactoros": "*"
+                "zendframework/zend-diactoros": "*",
+                "zendframework/zend-stratigility": "*"
             },
             "type": "library",
             "autoload": {
@@ -156,7 +159,7 @@
                 "source": "https://github.com/ergosense/php-oaf/tree/middleware",
                 "issues": "https://github.com/ergosense/php-oaf/issues"
             },
-            "time": "2018-08-23T15:06:55+00:00"
+            "time": "2018-08-24 13:00:34"
         },
         {
             "name": "fig/http-message-util",
@@ -206,7 +209,7 @@
                 "request",
                 "response"
             ],
-            "time": "2017-02-09T16:10:21+00:00"
+            "time": "2017-02-09 16:10:21"
         },
         {
             "name": "firebase/php-jwt",
@@ -252,7 +255,7 @@
             ],
             "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
             "homepage": "https://github.com/firebase/php-jwt",
-            "time": "2017-06-27T22:17:23+00:00"
+            "time": "2017-06-27 22:17:23"
         },
         {
             "name": "jeremeamia/SuperClosure",
@@ -310,7 +313,7 @@
                 "serialize",
                 "tokenizer"
             ],
-            "time": "2018-03-21T22:21:57+00:00"
+            "time": "2018-03-21 22:21:57"
         },
         {
             "name": "middlewares/fast-route",
@@ -360,7 +363,7 @@
                 "router",
                 "server"
             ],
-            "time": "2018-08-04T10:41:48+00:00"
+            "time": "2018-08-04 10:41:48"
         },
         {
             "name": "middlewares/negotiation",
@@ -411,7 +414,7 @@
                 "psr-7",
                 "server"
             ],
-            "time": "2018-08-04T10:41:52+00:00"
+            "time": "2018-08-04 10:41:52"
         },
         {
             "name": "middlewares/payload",
@@ -463,61 +466,7 @@
                 "server",
                 "url-encode"
             ],
-            "time": "2018-08-04T10:41:53+00:00"
-        },
-        {
-            "name": "middlewares/request-handler",
-            "version": "v1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/middlewares/request-handler.git",
-                "reference": "bf93cb50fd9c7ccfb00a3e640ed922d26d5f6a78"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/middlewares/request-handler/zipball/bf93cb50fd9c7ccfb00a3e640ed922d26d5f6a78",
-                "reference": "bf93cb50fd9c7ccfb00a3e640ed922d26d5f6a78",
-                "shasum": ""
-            },
-            "require": {
-                "middlewares/utils": "^2.1",
-                "php": "^7.0",
-                "psr/http-server-middleware": "^1.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.0",
-                "phpunit/phpunit": "^6.0|^7.0",
-                "psr/container": "^1.0",
-                "squizlabs/php_codesniffer": "^3.0",
-                "zendframework/zend-diactoros": "^1.3"
-            },
-            "suggest": {
-                "psr/container": "Can be used to resolve handlers automatically"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Middlewares\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Middleware to execute request handlers",
-            "homepage": "https://github.com/middlewares/request-handler",
-            "keywords": [
-                "controller",
-                "handler",
-                "http",
-                "invoke",
-                "middleware",
-                "psr-15",
-                "psr-7",
-                "request",
-                "server"
-            ],
-            "time": "2018-08-04T10:41:54+00:00"
+            "time": "2018-08-04 10:41:53"
         },
         {
             "name": "middlewares/utils",
@@ -568,7 +517,7 @@
                 "psr-17",
                 "psr-7"
             ],
-            "time": "2018-08-11T07:23:25+00:00"
+            "time": "2018-08-11 07:23:25"
         },
         {
             "name": "nikic/fast-route",
@@ -614,7 +563,7 @@
                 "router",
                 "routing"
             ],
-            "time": "2018-02-13T20:26:39+00:00"
+            "time": "2018-02-13 20:26:39"
         },
         {
             "name": "nikic/php-parser",
@@ -665,7 +614,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2018-07-15T17:25:16+00:00"
+            "time": "2018-07-15 17:25:16"
         },
         {
             "name": "php-di/invoker",
@@ -708,7 +657,7 @@
                 "invoke",
                 "invoker"
             ],
-            "time": "2017-03-20T19:28:22+00:00"
+            "time": "2017-03-20 19:28:22"
         },
         {
             "name": "php-di/php-di",
@@ -771,7 +720,7 @@
                 "ioc",
                 "psr11"
             ],
-            "time": "2018-04-23T06:54:40+00:00"
+            "time": "2018-04-23 06:54:40"
         },
         {
             "name": "php-di/phpdoc-reader",
@@ -808,7 +757,7 @@
                 "phpdoc",
                 "reflection"
             ],
-            "time": "2018-02-18T17:39:01+00:00"
+            "time": "2018-02-18 17:39:01"
         },
         {
             "name": "psr/container",
@@ -857,7 +806,7 @@
                 "container-interop",
                 "psr"
             ],
-            "time": "2017-02-14T16:28:37+00:00"
+            "time": "2017-02-14 16:28:37"
         },
         {
             "name": "psr/http-factory",
@@ -909,7 +858,7 @@
                 "request",
                 "response"
             ],
-            "time": "2018-07-30T21:54:04+00:00"
+            "time": "2018-07-30 21:54:04"
         },
         {
             "name": "psr/http-message",
@@ -959,7 +908,7 @@
                 "request",
                 "response"
             ],
-            "time": "2016-08-06T14:39:51+00:00"
+            "time": "2016-08-06 14:39:51"
         },
         {
             "name": "psr/http-server-handler",
@@ -1012,7 +961,7 @@
                 "response",
                 "server"
             ],
-            "time": "2018-01-22T17:04:15+00:00"
+            "time": "2018-01-22 17:04:15"
         },
         {
             "name": "psr/http-server-middleware",
@@ -1065,7 +1014,7 @@
                 "request",
                 "response"
             ],
-            "time": "2018-01-22T17:08:31+00:00"
+            "time": "2018-01-22 17:08:31"
         },
         {
             "name": "psr/log",
@@ -1112,7 +1061,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10T12:19:37+00:00"
+            "time": "2016-10-10 12:19:37"
         },
         {
             "name": "symfony/polyfill-php56",
@@ -1168,7 +1117,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-08-06T14:22:27+00:00"
+            "time": "2018-08-06 14:22:27"
         },
         {
             "name": "symfony/polyfill-util",
@@ -1220,7 +1169,178 @@
                 "polyfill",
                 "shim"
             ],
-            "time": "2018-08-06T14:22:27+00:00"
+            "time": "2018-08-06 14:22:27"
+        },
+        {
+            "name": "tuupola/callable-handler",
+            "version": "0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tuupola/callable-handler.git",
+                "reference": "662744a6a4a52235be5bd73ac04de4375eff3fc9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tuupola/callable-handler/zipball/662744a6a4a52235be5bd73ac04de4375eff3fc9",
+                "reference": "662744a6a4a52235be5bd73ac04de4375eff3fc9",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1",
+                "psr/http-server-middleware": "^1.0"
+            },
+            "require-dev": {
+                "codedungeon/phpunit-result-printer": "^0.4.4",
+                "overtrue/phplint": "^1.0",
+                "phpunit/phpunit": "^6.5",
+                "squizlabs/php_codesniffer": "^3.2",
+                "tuupola/http-factory": "^0.4.0",
+                "zendframework/zend-diactoros": "^1.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tuupola\\Middleware\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mika Tuupola",
+                    "email": "tuupola@appelsiini.net",
+                    "homepage": "https://appelsiini.net/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Compatibility layer for PSR-7 double pass and PSR-15 middlewares.",
+            "homepage": "https://github.com/tuupola/callable-handler",
+            "keywords": [
+                "middleware",
+                "psr-15",
+                "psr-7"
+            ],
+            "time": "2018-08-02 11:15:40"
+        },
+        {
+            "name": "tuupola/http-factory",
+            "version": "0.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tuupola/http-factory.git",
+                "reference": "c7e2712d5c4f49ddae704ae1f42854f437ddb028"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tuupola/http-factory/zipball/c7e2712d5c4f49ddae704ae1f42854f437ddb028",
+                "reference": "c7e2712d5c4f49ddae704ae1f42854f437ddb028",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1",
+                "psr/http-factory": "^1.0"
+            },
+            "require-dev": {
+                "http-interop/http-factory-tests": "^0.5.0",
+                "overtrue/phplint": "^1.0",
+                "phpunit/phpunit": "^6.5",
+                "squizlabs/php_codesniffer": "^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tuupola\\Http\\Factory\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mika Tuupola",
+                    "email": "tuupola@appelsiini.net",
+                    "homepage": "http://www.appelsiini.net/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Lightweight autodiscovering PSR-17 HTTP factories",
+            "homepage": "https://github.com/tuupola/http-factory",
+            "keywords": [
+                "http",
+                "psr-17",
+                "psr-7"
+            ],
+            "time": "2018-08-09 09:02:33"
+        },
+        {
+            "name": "tuupola/slim-jwt-auth",
+            "version": "3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tuupola/slim-jwt-auth.git",
+                "reference": "550e0475c02e1cfef0ec1326d609f563fc3fb48e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tuupola/slim-jwt-auth/zipball/550e0475c02e1cfef0ec1326d609f563fc3fb48e",
+                "reference": "550e0475c02e1cfef0ec1326d609f563fc3fb48e",
+                "shasum": ""
+            },
+            "require": {
+                "firebase/php-jwt": "^3.0 || ^4.0 || ^5.0",
+                "php": "^7.1",
+                "psr/http-message": "^1.0",
+                "psr/http-server-middleware": "^1.0",
+                "psr/log": "^1.0",
+                "tuupola/callable-handler": "^0.3.0|^0.4.0",
+                "tuupola/http-factory": "^0.4.0"
+            },
+            "require-dev": {
+                "codedungeon/phpunit-result-printer": "^0.5.4",
+                "equip/dispatch": "^2.0",
+                "overtrue/phplint": "^0.2.4",
+                "phpstan/phpstan": "^0.9.1",
+                "phpunit/phpunit": "^6.5",
+                "squizlabs/php_codesniffer": "^2.3",
+                "zendframework/zend-diactoros": "^1.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-3.x": "3.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tuupola\\Middleware\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mika Tuupola",
+                    "email": "tuupola@appelsiini.net",
+                    "homepage": "http://www.appelsiini.net/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PSR-7 and PSR-15 JWT Authentication Middleware",
+            "homepage": "https://github.com/tuupola/slim-jwt-auth",
+            "keywords": [
+                "auth",
+                "json",
+                "jwt",
+                "middleware",
+                "psr-15",
+                "psr-7"
+            ],
+            "time": "2018-08-07 10:15:43"
         },
         {
             "name": "willdurand/negotiation",
@@ -1272,7 +1392,7 @@
                 "header",
                 "negotiation"
             ],
-            "time": "2017-05-14T17:21:12+00:00"
+            "time": "2017-05-14 17:21:12"
         },
         {
             "name": "zendframework/zend-diactoros",
@@ -1335,7 +1455,7 @@
                 "psr",
                 "psr-7"
             ],
-            "time": "2018-08-10T14:16:32+00:00"
+            "time": "2018-08-10 14:16:32"
         },
         {
             "name": "zendframework/zend-escaper",
@@ -1380,7 +1500,7 @@
                 "escaper",
                 "zf"
             ],
-            "time": "2018-04-25T15:48:53+00:00"
+            "time": "2018-04-25 15:48:53"
         },
         {
             "name": "zendframework/zend-stratigility",
@@ -1446,7 +1566,7 @@
                 "psr-7",
                 "zf"
             ],
-            "time": "2018-07-24T20:39:18+00:00"
+            "time": "2018-07-24 20:39:18"
         }
     ],
     "packages-dev": [],
