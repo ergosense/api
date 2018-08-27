@@ -5,10 +5,10 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
-
 use Ergosense\Repository\UserRepository as UserRepo;
 use Ergosense\Service\JwtIssuer;
 use Ergosense\Traits\LoginResponder;
+use function OAF\validate;
 
 class PostLogin implements MiddlewareInterface
 {
@@ -24,8 +24,12 @@ class PostLogin implements MiddlewareInterface
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
     {
-        // TODO some validation
         $body = $request->getParsedBody();
+
+        validate()
+            ->key('email', validate()->email())
+            ->key('password', validate()->notEmpty())
+            ->check($body);
 
         $user = $this->userRepo->findByEmail($body['email']);
 

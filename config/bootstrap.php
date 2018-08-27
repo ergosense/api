@@ -7,6 +7,7 @@ use OAF\ResolvablePipe;
 use Middlewares\JsonPayload;
 use OAF\Middleware\ErrorHandler;
 use OAF\Middleware\RequestHandler;
+use OAF\Middleware\ValidationExceptionHandler;
 
 /*
  |---------------------
@@ -49,6 +50,7 @@ require_once __DIR__ . '/../routes/api.php';
 $stack = new ResolvablePipe($container);
 
 $stack->pipe(ErrorHandler::class);
+$stack->pipe(ValidationExceptionHandler::class);
 $stack->pipe(JsonPayload::class);
 $stack->pipe(RequestHandler::class);
 
