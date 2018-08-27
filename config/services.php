@@ -30,10 +30,11 @@ return [
     },
     JwtAuthentication::class => function (ContainerInterface $c) {
         return new JwtAuthentication([
-            'path'      => ['/'],
-            'ignore'    => ['/v1/login'],
             'secret'    => $c->get('jwt_key')
         ]);
+    },
+    Ergosense\Service\JwtIssuer::class => function (ContainerInterface $c) {
+        return new \Ergosense\Service\JwtIssuer('http://ergosense.io', $c->get('jwt_key'));
     },
     Ergosense\Action\Login::class => DI\autowire()
         ->constructorParameter('secret', DI\get('jwt_key'))

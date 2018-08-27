@@ -1,9 +1,11 @@
 <?php
-use Ergosense\Action\Login;
+use Ergosense\Action\PostLogin;
 use Ergosense\Action\GetMe;
 
-$r->get('/v1/me', GetMe::class);
-$r->post('/v1/login', Login::class);
+use Tuupola\Middleware\JwtAuthentication as JwtAuth;
+
+$r->get('/v1/me', [ JwtAuth::class, GetMe::class ]);
+$r->post('/v1/login', PostLogin::class);
 
 $r->get('/users', function () {});
 $r->post('/users', function () {});

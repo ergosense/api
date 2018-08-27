@@ -1,16 +1,12 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use FastRoute\RouteCollector;
 use DI\ContainerBuilder;
-use Zend\Stratigility\MiddlewarePipe;
-use OAF\Middleware\ErrorHandler;
-use OAF\Middleware\ContentType;
+use FastRoute\RouteCollector;
+use OAF\ResolvablePipe;
 use Middlewares\JsonPayload;
-use OAF\Middleware\JwtAuth;
+use OAF\Middleware\ErrorHandler;
 use OAF\Middleware\RequestHandler;
-use Tuupola\Middleware\JwtAuthentication;
-use function Zend\Stratigility\path;
 
 /*
  |---------------------
@@ -50,12 +46,10 @@ require_once __DIR__ . '/../routes/api.php';
  |
  | @see https://www.php-fig.org/psr/psr-15/
  */
-$stack = new MiddlewarePipe();
+$stack = new ResolvablePipe($container);
 
-$stack->pipe($container->get(ErrorHandler::class));
-$stack->pipe($container->get(ContentType::class));
-$stack->pipe($container->get(JsonPayload::class));
-$stack->pipe($container->get(JwtAuthentication::class));
-$stack->pipe($container->get(RequestHandler::class));
+$stack->pipe(ErrorHandler::class);
+$stack->pipe(JsonPayload::class);
+$stack->pipe(RequestHandler::class);
 
 return $stack;

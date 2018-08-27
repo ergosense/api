@@ -1,15 +1,17 @@
 <?php
-namespace Ergosense\Responder;
+declare(strict_types = 1);
 
-use Ergosense\Responder\Base;
+namespace Ergosense\Traits;
 
-trait User
+use Psr\Http\Message\ResponseInterface;
+
+trait UserResponder
 {
-    use Base {
+    use DefaultResponder {
         format as baseFormat;
     }
 
-    public function format(array $data) : array
+    public function format(array $data) : ResponseInterface
     {
         return $this->baseFormat([
             'id'        => (int) $data['id'],

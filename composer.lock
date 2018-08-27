@@ -4,8 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d3b7c6e1aeede5dbfa2975da979595b8",
-    "content-hash": "a1c93cf41524b94e0b17decac1cb6a5b",
+    "content-hash": "66503605a095faace354298720e59cbd",
     "packages": [
         {
             "name": "aura/sql",
@@ -58,7 +57,7 @@
                 "sqlserver",
                 "sqlsrv"
             ],
-            "time": "2018-06-11 12:57:42"
+            "time": "2018-06-11T12:57:42+00:00"
         },
         {
             "name": "aura/sqlquery",
@@ -122,7 +121,7 @@
                 "sqlserver",
                 "update"
             ],
-            "time": "2016-10-03 20:34:56"
+            "time": "2016-10-03T20:34:56+00:00"
         },
         {
             "name": "ergosense/php-oaf",
@@ -130,12 +129,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergosense/php-oaf.git",
-                "reference": "fd757e9b05518cfe40b388f05012759f8a2e5d85"
+                "reference": "7372f0c6db9b224870190f06dafaa8202f252da2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergosense/php-oaf/zipball/fd757e9b05518cfe40b388f05012759f8a2e5d85",
-                "reference": "fd757e9b05518cfe40b388f05012759f8a2e5d85",
+                "url": "https://api.github.com/repos/ergosense/php-oaf/zipball/7372f0c6db9b224870190f06dafaa8202f252da2",
+                "reference": "7372f0c6db9b224870190f06dafaa8202f252da2",
                 "shasum": ""
             },
             "require": {
@@ -159,7 +158,7 @@
                 "source": "https://github.com/ergosense/php-oaf/tree/middleware",
                 "issues": "https://github.com/ergosense/php-oaf/issues"
             },
-            "time": "2018-08-24 13:00:34"
+            "time": "2018-08-26T21:50:23+00:00"
         },
         {
             "name": "fig/http-message-util",
@@ -209,7 +208,7 @@
                 "request",
                 "response"
             ],
-            "time": "2017-02-09 16:10:21"
+            "time": "2017-02-09T16:10:21+00:00"
         },
         {
             "name": "firebase/php-jwt",
@@ -255,7 +254,7 @@
             ],
             "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
             "homepage": "https://github.com/firebase/php-jwt",
-            "time": "2017-06-27 22:17:23"
+            "time": "2017-06-27T22:17:23+00:00"
         },
         {
             "name": "jeremeamia/SuperClosure",
@@ -313,7 +312,7 @@
                 "serialize",
                 "tokenizer"
             ],
-            "time": "2018-03-21 22:21:57"
+            "time": "2018-03-21T22:21:57+00:00"
         },
         {
             "name": "middlewares/fast-route",
@@ -363,7 +362,7 @@
                 "router",
                 "server"
             ],
-            "time": "2018-08-04 10:41:48"
+            "time": "2018-08-04T10:41:48+00:00"
         },
         {
             "name": "middlewares/negotiation",
@@ -414,7 +413,7 @@
                 "psr-7",
                 "server"
             ],
-            "time": "2018-08-04 10:41:52"
+            "time": "2018-08-04T10:41:52+00:00"
         },
         {
             "name": "middlewares/payload",
@@ -466,7 +465,7 @@
                 "server",
                 "url-encode"
             ],
-            "time": "2018-08-04 10:41:53"
+            "time": "2018-08-04T10:41:53+00:00"
         },
         {
             "name": "middlewares/utils",
@@ -517,7 +516,7 @@
                 "psr-17",
                 "psr-7"
             ],
-            "time": "2018-08-11 07:23:25"
+            "time": "2018-08-11T07:23:25+00:00"
         },
         {
             "name": "nikic/fast-route",
@@ -563,7 +562,7 @@
                 "router",
                 "routing"
             ],
-            "time": "2018-02-13 20:26:39"
+            "time": "2018-02-13T20:26:39+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -614,7 +613,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2018-07-15 17:25:16"
+            "time": "2018-07-15T17:25:16+00:00"
         },
         {
             "name": "php-di/invoker",
@@ -657,20 +656,20 @@
                 "invoke",
                 "invoker"
             ],
-            "time": "2017-03-20 19:28:22"
+            "time": "2017-03-20T19:28:22+00:00"
         },
         {
             "name": "php-di/php-di",
-            "version": "6.0.2",
+            "version": "6.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-DI/PHP-DI.git",
-                "reference": "71a7f2ed1e728138060ea159cbb1a92dc8620bd2"
+                "reference": "61ef5c9fcbf04c8504a46d20bd27ea608eab7864"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-DI/PHP-DI/zipball/71a7f2ed1e728138060ea159cbb1a92dc8620bd2",
-                "reference": "71a7f2ed1e728138060ea159cbb1a92dc8620bd2",
+                "url": "https://api.github.com/repos/PHP-DI/PHP-DI/zipball/61ef5c9fcbf04c8504a46d20bd27ea608eab7864",
+                "reference": "61ef5c9fcbf04c8504a46d20bd27ea608eab7864",
                 "shasum": ""
             },
             "require": {
@@ -720,7 +719,7 @@
                 "ioc",
                 "psr11"
             ],
-            "time": "2018-04-23 06:54:40"
+            "time": "2018-08-25T22:21:38+00:00"
         },
         {
             "name": "php-di/phpdoc-reader",
@@ -757,7 +756,7 @@
                 "phpdoc",
                 "reflection"
             ],
-            "time": "2018-02-18 17:39:01"
+            "time": "2018-02-18T17:39:01+00:00"
         },
         {
             "name": "psr/container",
@@ -806,7 +805,7 @@
                 "container-interop",
                 "psr"
             ],
-            "time": "2017-02-14 16:28:37"
+            "time": "2017-02-14T16:28:37+00:00"
         },
         {
             "name": "psr/http-factory",
@@ -858,7 +857,7 @@
                 "request",
                 "response"
             ],
-            "time": "2018-07-30 21:54:04"
+            "time": "2018-07-30T21:54:04+00:00"
         },
         {
             "name": "psr/http-message",
@@ -908,7 +907,7 @@
                 "request",
                 "response"
             ],
-            "time": "2016-08-06 14:39:51"
+            "time": "2016-08-06T14:39:51+00:00"
         },
         {
             "name": "psr/http-server-handler",
@@ -961,7 +960,7 @@
                 "response",
                 "server"
             ],
-            "time": "2018-01-22 17:04:15"
+            "time": "2018-01-22T17:04:15+00:00"
         },
         {
             "name": "psr/http-server-middleware",
@@ -1014,7 +1013,7 @@
                 "request",
                 "response"
             ],
-            "time": "2018-01-22 17:08:31"
+            "time": "2018-01-22T17:08:31+00:00"
         },
         {
             "name": "psr/log",
@@ -1061,7 +1060,129 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10 12:19:37"
+            "time": "2016-10-10T12:19:37+00:00"
+        },
+        {
+            "name": "respect/validation",
+            "version": "1.1.23",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Respect/Validation.git",
+                "reference": "add542ea48be874ca8ab82208367430488a01e77"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/add542ea48be874ca8ab82208367430488a01e77",
+                "reference": "add542ea48be874ca8ab82208367430488a01e77",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4",
+                "symfony/polyfill-mbstring": "^1.2"
+            },
+            "require-dev": {
+                "egulias/email-validator": "~1.2",
+                "mikey179/vfsstream": "^1.5",
+                "phpunit/phpunit": "~4.0",
+                "symfony/validator": "~2.6.9",
+                "zendframework/zend-validator": "~2.3"
+            },
+            "suggest": {
+                "egulias/email-validator": "Strict (RFC compliant) email validation",
+                "ext-bcmath": "Arbitrary Precision Mathematics",
+                "ext-mbstring": "Multibyte String Functions",
+                "friendsofphp/php-cs-fixer": "Fix PSR2 and other coding style issues",
+                "symfony/validator": "Use Symfony validator through Respect\\Validation",
+                "zendframework/zend-validator": "Use Zend Framework validator through Respect\\Validation"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Respect\\Validation\\": "library/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD Style"
+            ],
+            "authors": [
+                {
+                    "name": "Respect/Validation Contributors",
+                    "homepage": "https://github.com/Respect/Validation/graphs/contributors"
+                }
+            ],
+            "description": "The most awesome validation engine ever created for PHP",
+            "homepage": "http://respect.github.io/Validation/",
+            "keywords": [
+                "respect",
+                "validation",
+                "validator"
+            ],
+            "time": "2018-08-18T13:10:37+00:00"
+        },
+        {
+            "name": "symfony/polyfill-mbstring",
+            "version": "v1.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-mbstring.git",
+                "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/d0cd638f4634c16d8df4508e847f14e9e43168b8",
+                "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "ext-mbstring": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.9-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Mbstring\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for the Mbstring extension",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "mbstring",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2018-08-06T14:22:27+00:00"
         },
         {
             "name": "symfony/polyfill-php56",
@@ -1117,7 +1238,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-08-06 14:22:27"
+            "time": "2018-08-06T14:22:27+00:00"
         },
         {
             "name": "symfony/polyfill-util",
@@ -1169,7 +1290,7 @@
                 "polyfill",
                 "shim"
             ],
-            "time": "2018-08-06 14:22:27"
+            "time": "2018-08-06T14:22:27+00:00"
         },
         {
             "name": "tuupola/callable-handler",
@@ -1222,7 +1343,7 @@
                 "psr-15",
                 "psr-7"
             ],
-            "time": "2018-08-02 11:15:40"
+            "time": "2018-08-02T11:15:40+00:00"
         },
         {
             "name": "tuupola/http-factory",
@@ -1273,7 +1394,7 @@
                 "psr-17",
                 "psr-7"
             ],
-            "time": "2018-08-09 09:02:33"
+            "time": "2018-08-09T09:02:33+00:00"
         },
         {
             "name": "tuupola/slim-jwt-auth",
@@ -1340,7 +1461,7 @@
                 "psr-15",
                 "psr-7"
             ],
-            "time": "2018-08-07 10:15:43"
+            "time": "2018-08-07T10:15:43+00:00"
         },
         {
             "name": "willdurand/negotiation",
@@ -1392,7 +1513,7 @@
                 "header",
                 "negotiation"
             ],
-            "time": "2017-05-14 17:21:12"
+            "time": "2017-05-14T17:21:12+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",
@@ -1455,7 +1576,7 @@
                 "psr",
                 "psr-7"
             ],
-            "time": "2018-08-10 14:16:32"
+            "time": "2018-08-10T14:16:32+00:00"
         },
         {
             "name": "zendframework/zend-escaper",
@@ -1500,7 +1621,7 @@
                 "escaper",
                 "zf"
             ],
-            "time": "2018-04-25 15:48:53"
+            "time": "2018-04-25T15:48:53+00:00"
         },
         {
             "name": "zendframework/zend-stratigility",
@@ -1566,7 +1687,7 @@
                 "psr-7",
                 "zf"
             ],
-            "time": "2018-07-24 20:39:18"
+            "time": "2018-07-24T20:39:18+00:00"
         }
     ],
     "packages-dev": [],

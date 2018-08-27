@@ -1,26 +1,28 @@
 <?php
 namespace Ergosense\Action;
 
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+use Psr\Http\Message\ResponseInterface;
 use Ergosense\Repository\UserRepository as UserRepo;
-use Ergosense\Responder\User as UserResponder;
+use Ergosense\Traits\UserResponder;
+use OAF\Traits\JwtUser;
 
-use OAF\Auth\Context;
-
-class GetMe
+class GetMe implements MiddlewareInterface
 {
-    use UserResponder;
+    use UserResponder, JwtUser;
 
     private $userRepo;
 
-    public function __construct(Context $context, UserRepo $userRepo)
+    public function __construct(UserRepo $userRepo)
     {
         $this->userRepo = $userRepo;
-        $this->context = $context;
     }
 
-    public function __invoke($request, $response)
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
     {
-        $contextUser = $this->context->getUser();
+        $contextUser = $this->authedUser($request);
 
         $user = $this->userRepo->findById($contextUser->id());
 
