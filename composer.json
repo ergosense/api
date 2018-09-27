@@ -1,10 +1,18 @@
 {
     "require": {
-        "ergosense/php-oaf": "dev-middleware",
+        "psr/http-server-handler": "*",
+        "psr/http-server-middleware": "*",
+        "zendframework/zend-stratigility": "*",
+        "zendframework/zend-diactoros": "*",
+        "zendframework/zend-httphandlerrunner": "*",
+        "php-di/php-di": "^6.0",
+        "middlewares/fast-route": "^1.1",
+        "middlewares/payload": "*",
+        "symfony/console": "*",
         "aura/sql": "^3.0",
         "aura/sqlquery": "^2.7",
-        "tuupola/slim-jwt-auth": "^3.1",
-        "respect/validation": "^1.1"
+        "respect/validation": "^1.1",
+        "web-token/jwt-signature": "^1.0"
     },
     "scripts": {
         "server": "php -S localhost:8080 -t public"

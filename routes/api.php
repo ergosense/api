@@ -2,7 +2,7 @@
 use Ergosense\Action\PostLogin;
 use Ergosense\Action\GetMe;
 
-use Tuupola\Middleware\JwtAuthentication as JwtAuth;
+use Ergosense\Middleware\JwtAuth;
 
 $r->get('/v1/me', [ JwtAuth::class, GetMe::class ]);
 $r->post('/v1/login', PostLogin::class);

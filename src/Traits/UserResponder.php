@@ -14,10 +14,10 @@ trait UserResponder
     public function format(array $data) : ResponseInterface
     {
         return $this->baseFormat([
-            'id'        => (int) $data['id'],
-            'email'     => $data['email'],
-            'role'      => $data['role'],
-            'active'    => (boolean) $data['active']
+            'id'        => (int) @$data['id'],
+            'email'     => @$data['email'],
+            'role'      => @$data['role'],
+            'active'    => (boolean) @$data['active']
         ]);
     }
 }

@@ -1,8 +1,9 @@
 <?php
-$stack = require_once __DIR__ . '/../config/bootstrap.php';
+$stack = require_once __DIR__ . '/../di/bootstrap.php';
 
-use Zend\Diactoros\Server;
-
+use Zend\HttpHandlerRunner\RequestHandlerRunner;
+use Zend\Diactoros\ServerRequestFactory;
+use Zend\HttpHandlerRunner\Emitter\SapiEmitter;
 /*
  |-------------------
  | Application Server
@@ -11,13 +12,13 @@ use Zend\Diactoros\Server;
  | will create a request from the context and feed it to
  | our application stack.
  */
-$server = Server::createServer(
-    [$stack, 'handle'],
-    $_SERVER,
-    $_GET,
-    $_POST,
-    $_COOKIE,
-    $_FILES
+ $runner = new RequestHandlerRunner(
+    $stack,
+    new SapiEmitter,
+    [ServerRequestFactory::class, 'fromGlobals'],
+    function () {
+        return null;
+    }
 );
 
-$server->listen();
+$runner->run();

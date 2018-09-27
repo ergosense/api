@@ -11,21 +11,10 @@ use OAF\Traits\JwtUser;
 
 class GetMe implements MiddlewareInterface
 {
-    use UserResponder, JwtUser;
-
-    private $userRepo;
-
-    public function __construct(UserRepo $userRepo)
-    {
-        $this->userRepo = $userRepo;
-    }
+    use UserResponder;
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
     {
-        $contextUser = $this->authedUser($request);
-
-        $user = $this->userRepo->findById($contextUser->id());
-
-        return $this->format($user);
+        return $this->format([]);
     }
 }

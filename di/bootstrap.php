@@ -3,11 +3,11 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use DI\ContainerBuilder;
 use FastRoute\RouteCollector;
-use OAF\ResolvablePipe;
+use Ergosense\ResolvablePipe;
 use Middlewares\JsonPayload;
-use OAF\Middleware\ErrorHandler;
-use OAF\Middleware\RequestHandler;
-use OAF\Middleware\ValidationExceptionHandler;
+use Ergosense\Middleware\ErrorHandler;
+use Ergosense\Middleware\RequestHandler;
+use Ergosense\Middleware\ValidationExceptionHandler;
 
 /*
  |---------------------
@@ -20,12 +20,15 @@ use OAF\Middleware\ValidationExceptionHandler;
  */
 $builder = new ContainerBuilder;
 
-$builder->addDefinitions(__DIR__ . '/../vendor/ergosense/php-oaf/config/services.php');
+$builder->addDefinitions(__DIR__ . '/services_routes.php');
+$builder->addDefinitions(__DIR__ . '/services_error.php');
+$builder->addDefinitions(__DIR__ . '/services_jwt.php');
 $builder->addDefinitions(__DIR__ . '/services.php');
-$builder->addDefinitions(__DIR__ . '/param_default.php');
+$builder->addDefinitions(__DIR__ . '/../config/param_default.php');
 
 $container = $builder->build();
 
+error_log(print_r($container->getKnownEntryNames(), 1));
 /*
  |----------------
  | Request Routing
